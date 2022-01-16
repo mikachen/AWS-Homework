@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg950\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 Arial-ItalicMT;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red85\green142\blue40;
+\red217\green11\blue5;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c39975\c61335\c20601;
+\cssrgb\c88946\c14202\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15620\viewh8080\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
+1. Try the statements below in REPL. Please answer that there are correct or not and explain the reasons. 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 a. 
+\f1 val id=9527\
+
+\fs32 \cf4 >> 
+\f0 Correct. But since we didn\'92t give id (immutable variable) a specific type, the complier will infer the type as integer.
+\f1 \
+
+\f0\fs29\fsmilli14667 \cf2 b. 
+\f1 var number : Int = 5.6\
+
+\f0\fs32 \cf5 >> Incorrect.  Value 5.6 can\'92t be an integer. Should declare as Float or Double type.\
+
+\fs29\fsmilli14667 \cf2 c. 
+\f1 var title = "Hello Kotlin!"\
+
+\fs32 \cf4 >> 
+\f0 Correct. The complier infers the type as String.\
+
+\f1\fs29\fsmilli14667 \cf2 \cb1 \uc0\u8232 
+\f0 \cb3 d. 
+\f1 val content : String = null\
+
+\f0\fs32 \cf5 >> Incorrect.  Types can not be null.  To allow null value, should declare it as a nullable string by writing 
+\f2\i String?
+\f0\i0  instead.\
+
+\f1\fs29\fsmilli14667 \cf2 \cb1 \uc0\u8232 
+\f0 \cb3 e. 
+\f1 val number : Double? = 556.6\
+
+\fs32 \cf4 >> 
+\f0 Correct. But it\'92s an immutable variable which means the value can\'92t be override to null in any cases. So I think it\'92s unnecessary to declare as nullable Double type.
+\f1\fs29\fsmilli14667 \
+\cf2 \cb1 \uc0\u8232 
+\f0 \cb3 f. 
+\f1 var list: List<String>? = listOf(null, null)\
+
+\f0\fs32 \cf5 >> Incorrect. Types can not be null. The list values were expected to be String type. Or declare it to allow nullable string values : \
+
+\f2\i\fs24 var list: List<String?> = listOf(null, null)\
+
+\f1\i0\fs29\fsmilli14667 \cf2 \cb1 \uc0\u8232 
+\f0 \cb3 g. 
+\f1 var list: List<String?>? = listOf("Wayne", "Chen") \
+
+\fs32 \cf4 >> 
+\f0 Correct. It allow nullable list values. And the variable list is nullable as well.
+\f1\fs29\fsmilli14667 \cf2 \
+
+\f0 h. 
+\f1 list.size\
+
+\f0\fs32 \cf5 >> Correct & Incorrect. We\'92re not sure if variable list is mutable or nullable or not. It should be better to be written as 
+\f2\i\fs24 list?.size 
+\f0\i0\fs32 (check if not null, then operate). Or written as 
+\f2\i\fs24 list!!.size
+\f0\i0\fs32  (operate it no matter it\'92s null or not) \
+
+\f1\fs29\fsmilli14667 \cf2 \cb1 \uc0\u8232 
+\f0 \cb3 i. 
+\f1 list?.size\
+
+\fs32 \cf4 >> 
+\f0 Correct. Complier will check if it is not null then operate the function. If it\'92s null, the operation stop.
+\f1\fs24 \cf2 \cb1 \
+}

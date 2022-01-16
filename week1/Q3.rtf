@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg950\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 Times-Bold;
+\f3\fnil\fcharset0 HelveticaNeue-Bold;\f4\fnil\fcharset136 PingFangTC-Regular;\f5\fswiss\fcharset0 Arial-ItalicMT;
+\f6\fnil\fcharset0 .SFNS-Bold;\f7\fnil\fcharset0 .SFNS-Regular;\f8\fnil\fcharset0 .SFNS-RegularItalic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red191\green100\blue38;
+\red32\green32\blue32;\red153\green168\blue186;\red109\green109\blue109;\red88\green118\blue71;\red86\green132\blue173;
+\red63\green105\blue30;\red19\green19\blue21;\red85\green142\blue40;\red74\green0\blue230;\red252\green83\blue8;
+\red59\green0\blue164;\red252\green73\blue64;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c80000\c47059\c19608;
+\cssrgb\c16863\c16863\c16863;\cssrgb\c66275\c71765\c77647;\cssrgb\c50196\c50196\c50196;\cssrgb\c41569\c52941\c34902;\cssrgb\c40784\c59216\c73333;
+\cssrgb\c30831\c47797\c15540;\cssrgb\c9804\c9804\c10980;\cssrgb\c39975\c61335\c20601;\cssrgb\c36820\c18688\c92265;\cssrgb\c100000\c41713\c26;
+\cssrgb\c30181\c13393\c70360;\cssrgb\c100000\c38374\c31601;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh12820\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
+3. Read the code below, choose the correct answer and explain the reason. \
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf4 \cb5 val \cf6 array = \cf7 // Question\
+\cf4 val \cf6 units = arrayOf(\cf8 "byte"\cf4 , \cf8 "KB"\cf4 , \cf8 "MB"\cf4 , \cf8 "GB"\cf4 ,\
+\cf8    "TB"\cf4 , \cf8 "PB"\cf6 )\
+\cf4 for \cf6 ((i\cf4 , \cf6 value) \cf4 in \cf6 array.withIndex()) \{\
+   println(\cf8 "1 \cf4 $\{\cf6 units[i]\cf4 \} \cf8 = \cf4 $\{\cf6 value.toLong()\cf4 \} \cf8 bytes\cf4 \\n\cf8 "\cf6 )\
+\}\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf2 \cb1 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 Output: \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1 \cf9 \cb5 1\cf6 byte=\cf9 1\cf6 bytes\cb1 \uc0\u8232 \cf9 \cb5 1 \cf6 KB = \cf9 1000 \cf6 bytes\cb1 \uc0\u8232 \cf9 \cb5 1 \cf6 MB = \cf9 1000000 \cf6 bytes\cb1 \uc0\u8232 \cf9 \cb5 1 \cf6 GB = \cf9 1000000000 \cf6 bytes\cb1 \uc0\u8232 \cf9 \cb5 1 \cf6 TB = \cf9 1000000000000 \cf6 bytes\cb1 \uc0\u8232 \cf9 \cb5 1 \cf6 PB = \cf9 1000000000000000 \cf6 bytes 
+\fs24 \cf2 \cb1 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs28 \cf2 3\
+
+\f0 \cb3 Which answer is the correct way to initialize the array to output. \
+a. 
+\f1 val array = new Array(6)\cb1 \uc0\u8232 
+\f0 \cb3 b. 
+\f1 val array = 
+\f2\b \{
+\f1\b0 100
+\f2\b \}\cb1 \uc0\u8232 
+\f0\b0 \cb3 c. 
+\f1 val array = Array(6) 
+\f2\b \{ 
+\f1\b0 1000.0.pow(10) 
+\f2\b \} 
+\f1\b0 \cb1 \
+
+\f0\fs36 \cf10 \cb3 d. 
+\f1 val array = Array(6) 
+\f2\b \{ 
+\f1\b0 1000.0.pow(
+\f2\b it
+\f1\b0 ) 
+\f2\b \} 
+\f1\b0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs40 \cf11 \cb3 \
+\cf12 Answer. D
+\f0\b0 \
+
+\fs36 \cf11 \
+1) Declare variable array which has a size of 6. \
+val array = Array(6) \{ 1000.0.pow(it) \} \
+\
+it: implicit name of a single parameter\uc0\u65279  
+\f4 inside the lambda expression
+\f0 \
+\
+2) Function withIndex() in for loop\
+
+\f5\i for((\cf13 index\cf11 , \cf14 value\cf11 ) in myArray.withIndex()) \{ \
+println("Value at Index $\cf15 index\cf11  is: $\cf16 value\cf11 ") \
+\}
+\f0\i0 \
+
+\f6\b \
+
+\f7\b0 3) Use 
+\f8\i toLong()
+\f7\i0  function to truncate the fractional part of values
+\fs40 \
+
+\f3\b \
+}

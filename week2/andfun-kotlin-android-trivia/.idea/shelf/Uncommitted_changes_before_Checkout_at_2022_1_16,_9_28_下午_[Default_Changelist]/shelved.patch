@@ -1,0 +1,71 @@
+Index: app/src/main/java/com/example/android/navigation/GameWonFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\n * Copyright 2018, The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\npackage com.example.android.navigation\n\nimport android.content.ActivityNotFoundException\nimport android.content.Intent\nimport androidx.databinding.DataBindingUtil\nimport android.os.Bundle\nimport androidx.fragment.app.Fragment\nimport androidx.core.app.ShareCompat\nimport android.view.LayoutInflater\nimport android.view.Menu\nimport android.view.MenuInflater\nimport android.view.MenuItem\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.Toast\nimport androidx.navigation.findNavController\nimport com.example.android.navigation.databinding.FragmentGameWonBinding\nimport android.content.pm.ResolveInfo\nimport android.content.pm.PackageManager\n\n\n\nclass GameWonFragment : Fragment() {\n    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,\n                              savedInstanceState: Bundle?): View? {\n        // Inflate the layout for this fragment\n        val binding: FragmentGameWonBinding = DataBindingUtil.inflate(\n                inflater, R.layout.fragment_game_won, container, false)\n        binding.nextMatchButton.setOnClickListener { view: View ->\n            view.findNavController().navigate(\n                    GameWonFragmentDirections.actionGameWonFragmentToGameFragment())\n        }\n        binding.goToProfileButton.setOnClickListener{ view:View ->\n            view.findNavController().navigate(\n                GameWonFragmentDirections.actionGameWonFragmentToProfileFragment()\n            )\n        }\n        setHasOptionsMenu(true)\n        return binding.root\n    }\n\n    private fun getShareIntent() : Intent {\n        val args = GameWonFragmentArgs.fromBundle(requireArguments())\n        return ShareCompat.IntentBuilder.from(activity!!)\n                .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))\n                .setType(\"text/plain\")\n                .intent\n    }\n\n    private fun shareSuccess() {\n        startActivity(getShareIntent())\n    }\n\n    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {\n        super.onCreateOptionsMenu(menu, inflater)\n        inflater.inflate(R.menu.winner_menu, menu)\n        // check if the activity resolves\n        if (null == getShareIntent().resolveActivity(requireActivity().packageManager)) {\n            // hide the menu item if it doesn't resolve\n            menu.findItem(R.id.share)?.isVisible = false\n        }\n    }\n\n    override fun onOptionsItemSelected(item: MenuItem): Boolean {\n        when (item.itemId) {\n            R.id.share -> shareSuccess()\n        }\n        return super.onOptionsItemSelected(item)\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/android/navigation/GameWonFragment.kt b/app/src/main/java/com/example/android/navigation/GameWonFragment.kt
+--- a/app/src/main/java/com/example/android/navigation/GameWonFragment.kt	(revision c246978f44b60c71a7a0455f128ad50a49bd21f2)
++++ b/app/src/main/java/com/example/android/navigation/GameWonFragment.kt	(date 1642334197722)
+@@ -16,7 +16,7 @@
+ 
+ package com.example.android.navigation
+ 
+-import android.content.ActivityNotFoundException
++
+ import android.content.Intent
+ import androidx.databinding.DataBindingUtil
+ import android.os.Bundle
+@@ -28,25 +28,25 @@
+ import android.view.MenuItem
+ import android.view.View
+ import android.view.ViewGroup
+-import android.widget.Toast
+ import androidx.navigation.findNavController
+ import com.example.android.navigation.databinding.FragmentGameWonBinding
+-import android.content.pm.ResolveInfo
+-import android.content.pm.PackageManager
+-
+ 
+ 
+ class GameWonFragment : Fragment() {
+-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+-                              savedInstanceState: Bundle?): View? {
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
+         // Inflate the layout for this fragment
+         val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
+-                inflater, R.layout.fragment_game_won, container, false)
++            inflater, R.layout.fragment_game_won, container, false
++        )
+         binding.nextMatchButton.setOnClickListener { view: View ->
+             view.findNavController().navigate(
+-                    GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
++                GameWonFragmentDirections.actionGameWonFragmentToGameFragment()
++            )
+         }
+-        binding.goToProfileButton.setOnClickListener{ view:View ->
++        binding.goToProfileButton.setOnClickListener { view: View ->
+             view.findNavController().navigate(
+                 GameWonFragmentDirections.actionGameWonFragmentToProfileFragment()
+             )
+@@ -55,12 +55,12 @@
+         return binding.root
+     }
+ 
+-    private fun getShareIntent() : Intent {
++    private fun getShareIntent(): Intent {
+         val args = GameWonFragmentArgs.fromBundle(requireArguments())
+         return ShareCompat.IntentBuilder.from(activity!!)
+-                .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))
+-                .setType("text/plain")
+-                .intent
++            .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))
++            .setType("text/plain")
++            .intent
+     }
+ 
+     private fun shareSuccess() {
